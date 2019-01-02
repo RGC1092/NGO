@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_margin="7dp">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/item_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/newyear" />
+
+                <LinearLayout
+                    android:id="@+id/llmain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/whtrans"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tvEventName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="X-Mas Celebration Party"
+                        android:textColor="@color/colorBlack"
+                        android:padding="5dp"
+                        android:textAppearance="?attr/textAppearanceListItem"
+                        android:textStyle="bold|italic" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorBlack"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            android:gravity="center_vertical"
+                            android:textStyle="bold"
+                            android:text="25th Dec 2018"
+                            android:textAppearance="?attr/textAppearanceListItem" />
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorBlack"
+                            android:padding="5dp"
+                            android:textStyle="bold"
+                            android:text="IST 17.00 onwords"
+                            android:textAppearance="?attr/textAppearanceListItem" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvVenue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Venue : at London Bridge"
+                        android:textColor="@color/colorBlack"
+                        android:padding="5dp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
