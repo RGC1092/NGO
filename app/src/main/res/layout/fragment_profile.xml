@@ -150,12 +150,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="4"
-                        android:drawableLeft="@drawable/ic_event"
+                        android:drawableLeft="@drawable/news"
                         android:drawablePadding="5dp"
                         android:drawableTint="@color/colorBottomNavigationNotification"
                         android:padding="10dp"
                         android:shadowColor="@color/colorAccent"
-                        android:text="Upcomming Events"
+                        android:text="News &amp; Events"
 
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -254,6 +254,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/border_account">
+
 
                 <LinearLayout
                     android:id="@+id/llSetting"

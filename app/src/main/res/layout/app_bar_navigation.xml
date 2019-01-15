@@ -40,10 +40,10 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imgLogout"
-            android:layout_width="30dp"
+            android:id="@+id/imgNotify"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_weight="02"
             android:padding="5dp"
             android:src="@drawable/calendarnotify"
             android:tint="@color/colorWhite" />

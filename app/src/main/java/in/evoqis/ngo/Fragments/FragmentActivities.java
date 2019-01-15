@@ -38,10 +38,10 @@ public class FragmentActivities extends Fragment {
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
 
-        String date = "25-Dec-2018";
-        String time = "IST 10:00 onwords";
-        String name = "X'Mas Party";
-        String place = "at London Bridge";
+        String date = "Sat 12 January 2019";
+        String time = "14:30 – 17:30 GMT";
+        String name = "TRUTH WILL Be TOLD";
+        String place = "Venue : ORTUS Conferencing and Events Venue,\n   82-96 Grove Lane, London.\n   SE5 8SN,United Kingdom";
         for (int i = 0; i < 10; i++) {
             list.add(new RecentActivities(date, time, name, place));
         }

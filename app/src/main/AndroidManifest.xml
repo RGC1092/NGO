@@ -25,16 +25,13 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme" />
+            android:label="@string/title_activity_navigation" />
         <activity android:name=".Activities.Notification" />
         <activity
             android:name=".Activities.WhatWeDoActivity"
-            android:label="@string/title_activity_what_we_do"
-            android:theme="@style/AppTheme" />
+            android:label="@string/title_activity_what_we_do" />
         <activity android:name=".Activities.AboutUs" />
-        <activity android:name=".Activities.Events" />
-        <activity android:name=".Activities.SignUp"></activity>
+        <activity android:name=".Activities.SignUp" />
     </application>
 
 </manifest>

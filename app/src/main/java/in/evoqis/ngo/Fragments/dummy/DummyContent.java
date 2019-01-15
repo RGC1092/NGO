@@ -38,7 +38,7 @@ public class DummyContent {
     }
 
     private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf("01st Jan 2019\n 23.00 o'clock"), "New Year 2019 Festival", makeDetails(position));
+        return new DummyItem(String.valueOf("Sat, 12 January 2019\n 14:30 – 17:30 GMT"), "TRUTH WILL Be TOLD", makeDetails(position));
     }
 
     private static String makeDetails(int position) {

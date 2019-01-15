@@ -92,6 +92,17 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+    <string name="large_text_event_details">"There is another truth waiting to be told. Audacious, glaring and inconceivable. Suspense isn't intentional, but safety of these brave men."
+        "\nGIF promotes the secular democratic fabric of India. It is no secret that the freedom of press in India currently, is under immense pressure. A journalist is first an ordinary citizen who is incumbent to champion the cause of transparent and at times brave journalism."
+
+        "\nOne such incredibly brave journalist has decided to put the truth in front of you."
+
+        "\nThere are truths that have been told. And there is another one waiting to be told. Audacious, glaring and inconceivable. The suspense is not intentional, but a need for the safety and security of these brave men."
+
+        "\nPlease come and support GIF and the journalist who dares to be the third pillar of democracy."
+
+    </string>
     <string name="title_activity_what_we_do">What We Do ?</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

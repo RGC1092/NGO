@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,21 +32,21 @@ import android.widget.Toast;
 
 import in.evoqis.ngo.Activities.AboutUs;
 import in.evoqis.ngo.Activities.Notification;
+import in.evoqis.ngo.Activities.SignUp;
 import in.evoqis.ngo.Fragments.FragmentEvents;
 import in.evoqis.ngo.Activities.WhatWeDoActivity;
 import in.evoqis.ngo.Fragments.FragmentActivities;
 import in.evoqis.ngo.Fragments.FragmentProfile;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
-Context context=this;
-    private LinearLayout recentEvents,upcommingEvents, whatWeDo, aboutUs, settings;
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+    Context context = this;
+    private LinearLayout recentEvents, upcommingEvents, whatWeDo, aboutUs, settings;
     private TextView mTextMessage;
-    ImageView imgDrawer;
+    ImageView imgDrawer,imgNotify;
     FloatingActionButton fab;
-    NavigationView navigationView;
-    DrawerLayout drawer;
+    String value;
     Toolbar toolbar;
-
+    SharedPreferences sharedpreference;
     BottomNavigationView navigation;
     LinearLayout llheader;
 
@@ -55,7 +56,7 @@ Context context=this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initUI();
-      // initListner();
+        initListner();
 
      /*   fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,39 +74,20 @@ Context context=this;
         //bottom navigation Listener
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        //Drawer menu navigation Listener
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-        imgDrawer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawer.openDrawer(GravityCompat.START);
-            }
-        });
-
     }
 
-   /* private void initListner() {
-       recentEvents.setOnClickListener(this);
-        upcommingEvents.setOnClickListener(this);
-        whatWeDo.setOnClickListener(this);
-        aboutUs.setOnClickListener(this);
-        settings.setOnClickListener(this);
-    }*/
+    private void initListner() {
+        imgDrawer.setOnClickListener(this);
+        imgNotify.setOnClickListener(this);
+    }
+
     private void initUI() {
         imgDrawer = findViewById(R.id.imgDrawer);
+        imgNotify = findViewById(R.id.imgNotify);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         mTextMessage = (TextView) findViewById(R.id.txtMain);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         llheader = findViewById(R.id.llheader);
-        recentEvents = findViewById(R.id.llRecent);
-        upcommingEvents = findViewById(R.id.llUpcomming);
-        whatWeDo =findViewById(R.id.llWho);
-        aboutUs = findViewById(R.id.llAboutus);
-        settings = findViewById(R.id.llSetting);
         // llheader.setVisibility(View.VISIBLE);
 
         mTextMessage.setText("Activities");
@@ -162,10 +144,16 @@ Context context=this;
                     navigation.getMenu().getItem(1).setChecked(true);
                     return true;
                 case R.id.navigation_Profile:
-                    mTextMessage.setText("Profile");
-                    loadFragment(new FragmentProfile());
-                    llheader.setVisibility(View.GONE);
-                    navigation.getMenu().getItem(2).setChecked(true);
+                  /*  if(value == sharedpreference.getString("button_value", "")){
+                        Intent guest = new Intent(HomeActivity.this, LoginActivity.class);
+                        startActivity(guest);
+                    }
+                    else {*/
+                        mTextMessage.setText("Profile");
+                        loadFragment(new FragmentProfile());
+                        llheader.setVisibility(View.GONE);
+                        navigation.getMenu().getItem(2).setChecked(true);
+                    //}
                     return true;
             }
             return false;
@@ -186,16 +174,12 @@ Context context=this;
             System.exit(0);
 
         } else {
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            } else {
-                mTextMessage.setText("Activities");
-                navigation.getMenu().getItem(1).setChecked(true);
-                loadFragment(new FragmentActivities());
-                doubleBackToExitPressed++;
-                Toast.makeText(this, "Please press , again to exit", Toast.LENGTH_SHORT).show();
-            }
-
+            mTextMessage.setText("Activities");
+            navigation.getMenu().getItem(1).setChecked(true);
+            loadFragment(new FragmentActivities());
+            llheader.setVisibility(View.VISIBLE);
+            doubleBackToExitPressed++;
+            Toast.makeText(this, "Please press , again to exit", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -230,74 +214,22 @@ Context context=this;
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        if (id == R.id.llRecentEvent) {
-            Intent recent = new Intent(this, HomeActivity.class);
-            startActivity(recent);
-            // Handle the camera action
-        }else if (id == R.id.llUpcomming) {
-            Intent notify = new Intent(this, Notification.class);
-            startActivity(notify);
-
-        } else if (id == R.id.llWho) {
-            Intent whatwedo = new Intent(this, WhatWeDoActivity.class);
-            startActivity(whatwedo);
-
-        } else if (id == R.id.llAboutus) {
-            Intent aboutus = new Intent(this, AboutUs.class);
-            startActivity(aboutus);
-
-        } else if (id == R.id.llSetting) {
-            Intent settings = new Intent(this, Notification.class);
-            startActivity(settings);
-
-        } else if (id == R.id.llLogout) {
-            Toast.makeText(context, "Loguot Successfully", Toast.LENGTH_SHORT).show();
-            finish();
-
-        }
-
-
-
-
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
 
     @Override
     public void onClick(View view) {
 
-/*
         switch (view.getId()) {
 
-            case R.id.llRecent:
-                Intent recent = new Intent(this, HomeActivity.class);
-                startActivity(recent);
+            case R.id.imgDrawer:
+                mTextMessage.setText("Profile");
+                loadFragment(new FragmentProfile());
+                llheader.setVisibility(View.GONE);
+                navigation.getMenu().getItem(2).setChecked(true);
                 break;
-            case R.id.llUpcomming:
+            case R.id.imgNotify:
                 Intent notify = new Intent(this, Notification.class);
                 startActivity(notify);
                 break;
-            case R.id.llWho:
-                Intent whatwedo = new Intent(this, WhatWeDoActivity.class);
-                startActivity(whatwedo);
-                break;
-            case R.id.llAboutus:
-                Intent aboutus = new Intent(this, AboutUs.class);
-                startActivity(aboutus);
-                break;
-            case R.id.llSetting:
-                Intent settings = new Intent(this, Notification.class);
-                startActivity(settings);
-                break;
-
-
         }
-*/
     }
 }

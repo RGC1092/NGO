@@ -4,7 +4,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,18 +16,28 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import in.evoqis.ngo.Activities.Events;
 import in.evoqis.ngo.Activities.SignUp;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView tvForgotPassword,tvguest;
-    private Button btnLogin,btnSignup;
+    private TextView tvForgotPassword, tvguest, tvSkip;
+    private Button btnLogin, btnSignup;
     private EditText etUserName, etPassword;
+    SharedPreferences sharedpreference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sharedpreference=PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
         initUI();
+        initListner();
+
+    }
+
+    private void initListner() {
+
+        tvForgotPassword.setOnClickListener(this);
+        btnSignup.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
 
     }
 
@@ -33,19 +45,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void initUI() {
 
 
-
         etUserName = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);
         tvguest = findViewById(R.id.tvguest);
+        tvSkip = findViewById(R.id.tvSkip);
         tvForgotPassword = findViewById(R.id.tvForgotPassword);
-        tvForgotPassword.setOnClickListener(this);
-
         btnSignup = findViewById(R.id.btnSignup);
-        btnSignup.setOnClickListener(this);
-
         btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(this);
-
         tvguest.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         tvForgotPassword.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
@@ -70,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());
     }
+
     @Override
     public void onClick(View view) {
 
@@ -101,16 +108,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnSignup:
                 Toast.makeText(this, "Wel-Come..!! \nYou are very close to Join us.", Toast.LENGTH_SHORT).show();
 
-               finish();
+                finish();
                 Intent intent = new Intent(LoginActivity.this, SignUp.class);
                 startActivity(intent);
+                break;
+            case R.id.tvguest:
+                Toast.makeText(this, "Wel-Come..!! \nLogin with Guest", Toast.LENGTH_SHORT).show();
+              //  sharedpreference.edit().putString("button_value",tvguest.getText().toString()).apply();1
+                Intent guest = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(guest);
                 break;
         }
 
 
-
     }
-
 
 
 }

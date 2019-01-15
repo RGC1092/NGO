@@ -6,7 +6,21 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context=".Activities.Notification">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:orientation="vertical"
+        android:gravity="center">
 
+        <Button
+            android:onClick="ShowPopup"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/buttonstyle"
+            android:text="show popup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+<!--
         <LinearLayout
             android:id="@+id/llheader"
             android:layout_width="match_parent"
@@ -31,6 +45,7 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+-->
 
 
     <android.support.v7.widget.RecyclerView

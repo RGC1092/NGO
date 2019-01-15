@@ -17,7 +17,7 @@ import in.evoqis.ngo.R;
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
     EditText etName, etOtp, etMail, etMobile;
     AutoCompleteTextView etCity;
-    TextView tvalreadyAccount;
+    TextView btnSignIn;
     Button btnSignUp;
 
     @Override
@@ -29,16 +29,16 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void initListner() {
-        tvalreadyAccount.setOnClickListener(this);
+        btnSignIn.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
     }
 
     private void initUI() {
         btnSignUp = findViewById(R.id.btnSignup);
-        tvalreadyAccount = findViewById(R.id.tvalreadyAccount);
+        btnSignIn = findViewById(R.id.tvalreadyAccount);
         etName = findViewById(R.id.etName);
         etCity = findViewById(R.id.etCity);
-        etOtp = findViewById(R.id.etOtp);
+        etOtp = findViewById(R.id.etPassword);
         etMail = findViewById(R.id.etMail);
         etMobile = findViewById(R.id.etMobile);
 
@@ -73,6 +73,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     startActivity(intent1);
 
                 }
+                break;
+            case R.id.tvalreadyAccount:
+                Intent signin = new Intent(SignUp.this, LoginActivity.class);
+                startActivity(signin);
                 break;
         }
     }
